@@ -1,0 +1,172 @@
+/* ==========================================================
+   Eric Kayz Barbershop - styles.css (WEDE5020 POE Part 2)
+   Replaces the inline <style> block that was in index.html.
+   Theme from the Part 1 proposal: dark palette, gold and white accents.
+   Sections: 1 Reset | 2 Tokens | 3 Base | 4 Card and header
+             5 Contact list | 6 Links and buttons | 7 Footer
+             8 Tablet | 9 Mobile
+   ========================================================== */
+
+@import url("https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Source+Sans+3:wght@400;600&display=swap");
+
+/* 1. Reset - one rule replaces the repeated "margin: 0; padding: 0"
+   declarations that were spread across several selectors */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+img, picture { display: block; max-width: 100%; height: auto; }
+ul { list-style: none; }
+button, input, textarea, select { font: inherit; color: inherit; }
+
+/* 2. Tokens - to change the colour scheme, edit only this block */
+:root {
+  --ink: #14120f;
+  --charcoal: #211e19;
+  --line: #3b352b;
+  --gold: #c9a24b;
+  --bone: #f2ede3;
+  --muted: #b8b0a2;
+  --font-head: "Barlow Condensed", "Arial Narrow", Impact, sans-serif;
+  --font-body: "Source Sans 3", "Helvetica Neue", Arial, sans-serif;
+  --radius: 0.5rem;
+}
+
+/* 3. Base styles */
+html { font-size: 100%; }
+
+body {
+  background: var(--ink);
+  color: var(--bone);
+  font-family: var(--font-body);
+  font-size: 1.125rem;
+  line-height: 1.6;
+}
+
+/* 4. Card and header */
+.card {
+  width: min(100% - 2rem, 68rem);
+  margin: 2.5rem auto;
+  background: var(--charcoal);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: 0 0.75rem 2rem rgba(0, 0, 0, 0.5);
+}
+
+.header {
+  padding: 3.5rem 2rem;
+  text-align: center;
+  background: var(--ink);
+  border-bottom: 2px solid var(--gold);
+}
+.header h1 {
+  font-family: var(--font-head);
+  font-size: 3.5rem;
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: 0.03em;
+}
+.header p {
+  margin-top: 0.5rem;
+  font-size: 1.25rem;
+  color: var(--gold);
+}
+
+/* 5. Contact list - a Grid of tiles: 3 columns desktop, 2 tablet, 1 mobile.
+   The 1px gap shows the background colour, which draws the tile borders. */
+.contact-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--line);
+}
+.contact-list li {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.5rem;
+  background: var(--charcoal);
+  transition: background 0.2s;
+}
+.contact-list li:hover { background: #2b271f; }
+
+.icon {
+  flex-shrink: 0;
+  width: 2.75rem;
+  height: 2.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--gold);
+  border-radius: 50%;
+  background: var(--ink);
+  font-size: 1.15rem;
+}
+
+.label { font-size: 0.875rem; color: var(--muted); }
+.value { font-size: 1.0625rem; font-weight: 600; overflow-wrap: anywhere; }
+
+/* 6. Links and buttons */
+a {
+  color: var(--bone);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: color 0.2s, border-color 0.2s;
+}
+a:hover { color: var(--gold); border-color: var(--gold); }
+a:active { color: var(--bone); }
+a:focus-visible {
+  outline: 3px solid var(--gold);
+  outline-offset: 3px;
+}
+
+/* Main call to action, e.g. <a class="btn" href="...">Book your haircut</a> */
+.btn {
+  display: inline-block;
+  margin-top: 1.5rem;
+  padding: 0.85rem 2rem;
+  background: var(--gold);
+  color: var(--ink);
+  font-weight: 600;
+  border: 2px solid var(--gold);
+  border-radius: var(--radius);
+  transition: background 0.2s, border-color 0.2s, transform 0.1s;
+}
+.btn:hover { background: var(--bone); border-color: var(--bone); color: var(--ink); }
+.btn:active { transform: translateY(1px); }
+
+/* 7. Footer */
+.footer {
+  padding: 1.25rem 2rem 1.5rem;
+  text-align: center;
+  font-size: 0.875rem;
+  color: var(--muted);
+  border-top: 1px solid var(--line);
+}
+
+/* 8. Tablet - up to 992px */
+@media (max-width: 62rem) {
+  .header { padding: 2.5rem 1.5rem; }
+  .header h1 { font-size: 2.75rem; }
+  .contact-list { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* 9. Mobile - up to 640px: single column, card fills the screen */
+@media (max-width: 40rem) {
+  body { font-size: 1rem; }
+  .card {
+    width: 100%;
+    margin: 0;
+    border-width: 0;
+    border-radius: 0;
+  }
+  .header { padding: 2rem 1.25rem; }
+  .header h1 { font-size: 2.25rem; }
+  .header p { font-size: 1.1rem; }
+  .btn { display: block; text-align: center; }
+  .contact-list { grid-template-columns: 1fr; }
+  .contact-list li { padding: 1.1rem 1.25rem; }
+}
+
+/* Respect users who prefer less motion */
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; }
+}
