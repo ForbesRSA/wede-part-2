@@ -1,22 +1,10 @@
-/* ==========================================================
-   Eric Kayz Barbershop - styles.css (WEDE5020 POE Part 2)
-   Replaces the inline <style> block that was in index.html.
-   Theme from the Part 1 proposal: dark palette, gold and white accents.
-   Sections: 1 Reset | 2 Tokens | 3 Base | 4 Card and header
-             5 Contact list | 6 Links and buttons | 7 Footer
-             8 Tablet | 9 Mobile
-   ========================================================== */
-
 @import url("https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Source+Sans+3:wght@400;600&display=swap");
 
-/* 1. Reset - one rule replaces the repeated "margin: 0; padding: 0"
-   declarations that were spread across several selectors */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 img, picture { display: block; max-width: 100%; height: auto; }
 ul { list-style: none; }
 button, input, textarea, select { font: inherit; color: inherit; }
 
-/* 2. Tokens - to change the colour scheme, edit only this block */
 :root {
   --ink: #14120f;
   --charcoal: #211e19;
@@ -29,7 +17,6 @@ button, input, textarea, select { font: inherit; color: inherit; }
   --radius: 0.5rem;
 }
 
-/* 3. Base styles */
 html { font-size: 100%; }
 
 body {
@@ -40,7 +27,7 @@ body {
   line-height: 1.6;
 }
 
-/* 4. Card and header */
+
 .card {
   width: min(100% - 2rem, 68rem);
   margin: 2.5rem auto;
@@ -70,8 +57,7 @@ body {
   color: var(--gold);
 }
 
-/* 5. Contact list - a Grid of tiles: 3 columns desktop, 2 tablet, 1 mobile.
-   The 1px gap shows the background colour, which draws the tile borders. */
+
 .contact-list {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -104,7 +90,7 @@ body {
 .label { font-size: 0.875rem; color: var(--muted); }
 .value { font-size: 1.0625rem; font-weight: 600; overflow-wrap: anywhere; }
 
-/* 6. Links and buttons */
+
 a {
   color: var(--bone);
   text-decoration: none;
@@ -133,7 +119,7 @@ a:focus-visible {
 .btn:hover { background: var(--bone); border-color: var(--bone); color: var(--ink); }
 .btn:active { transform: translateY(1px); }
 
-/* 7. Footer */
+
 .footer {
   padding: 1.25rem 2rem 1.5rem;
   text-align: center;
@@ -142,14 +128,14 @@ a:focus-visible {
   border-top: 1px solid var(--line);
 }
 
-/* 8. Tablet - up to 992px */
+/*Tablet - up to 992px */
 @media (max-width: 62rem) {
   .header { padding: 2.5rem 1.5rem; }
   .header h1 { font-size: 2.75rem; }
   .contact-list { grid-template-columns: repeat(2, 1fr); }
 }
 
-/* 9. Mobile - up to 640px: single column, card fills the screen */
+
 @media (max-width: 40rem) {
   body { font-size: 1rem; }
   .card {
